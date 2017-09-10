@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="11dp"
     android:orientation="vertical"
-    tools:context="adaz.urbantick_ibratec.FornecedorListaActivity">
+    tools:context="adaz.urbantick_ibratec.Gui.FornecedorListaActivity">
 
     <ListView
         android:layout_width="match_parent"

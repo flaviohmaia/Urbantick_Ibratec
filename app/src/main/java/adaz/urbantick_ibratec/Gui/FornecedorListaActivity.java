@@ -1,4 +1,4 @@
-package adaz.urbantick_ibratec;
+package adaz.urbantick_ibratec.Gui;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.ListFragment;
@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import adaz.urbantick_ibratec.Model.Fornecedor;
+import adaz.urbantick_ibratec.R;
 
 public class FornecedorListaActivity extends AppCompatActivity{
 

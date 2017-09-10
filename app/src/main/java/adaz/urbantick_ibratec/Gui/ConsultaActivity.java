@@ -1,4 +1,4 @@
-package adaz.urbantick_ibratec;
+package adaz.urbantick_ibratec.Gui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import adaz.urbantick_ibratec.R;
 
 public class ConsultaActivity extends AppCompatActivity {
 

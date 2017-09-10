@@ -1,4 +1,4 @@
-package adaz.urbantick_ibratec;
+package adaz.urbantick_ibratec.Gui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import adaz.urbantick_ibratec.Gui.ConsultaActivity;
+import adaz.urbantick_ibratec.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,19 +29,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doLogin(View view){
-        //checaRestricoes();
+        checaRestricoes();
         Intent intent = new Intent(getApplicationContext(), ConsultaActivity.class);
         startActivity(intent);
+
+        Toast.makeText(getApplication(),
+                "Seja bem vindo" +editEmail.getText().toString()+"!",
+                Toast.LENGTH_LONG).show();
+
+        //Limpando os dados digitados
+        editEmail.setText("");
+        editSenha.setText("");
     }
 
 
     private void checaRestricoes(){
         if(editEmail.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(), "Informe o email", Toast.LENGTH_LONG).show();
-        }
-
-        if(editSenha.getText().toString().equals("")){
+        }else if(editSenha.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Informe a senha", Toast.LENGTH_LONG).show();
         }
-    }
+        }
 }
