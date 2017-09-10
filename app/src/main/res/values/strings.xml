@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Urbantick</string>
+    <string name="txtEmail">E-mail</string>
+    <string name="txtSenha">Senha</string>
+    <string name="txtEntrar">Entrar</string>
+    <string name="txtBuscar">Buscar</string>
+    <string name="txtCategoria">Categoria</string>
+    <string name="txtSubCategoria">Sub-Categoria</string>
+    <string name="txtEstado">Estado</string>
+    <string name="txtCidade">Cidade</string>
+
+    <string-array name="categorias">
+        <item />
+        <item>MUSICO</item>
+        <item>FOTOGRAFO</item>
+        <item>CINEGRAFISTA</item>
+        <item>ROADIES</item>
+        <item>PRODUTOR</item>
+        <item>ILUMINACAO</item>
+        <item>SONORIZACAO</item>
+        <item>PALCOS</item>
+        <item>OUTROS</item>
+    </string-array>
+
+    <string-array name="subcategorias">
+        <item />
+        <item>GUITARRISTA</item>
+        <item>VIOLONISTA</item>
+        <item>BAIXISTA</item>
+        <item>BATERISTA</item>
+        <item>TECLADISTA</item>
+        <item>PERCUSSIONISTA</item>
+        <item>CANTOR</item>
+        <item>CORDAS</item>
+        <item>TECNICO DE SOM</item>
+        <item>METAIS E SOPRO</item>
+        <item>DJ</item>
+        <item>OUTROS</item>
+    </string-array>
+
+    <string-array name="uf">
+        <item />
+        <item>AC</item>
+        <item>AL</item>
+        <item>AM</item>
+        <item>AP</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MG</item>
+        <item>MS</item>
+        <item>MT</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>PR</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>RS</item>
+        <item>SC</item>
+        <item>SE</item>
+        <item>SP</item>
+        <item>TO</item>
+    </string-array>
+</resources>
