@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import adaz.urbantick_ibratec.FornecedorListaActivity;
 import adaz.urbantick_ibratec.R;
 
 public class ConsultaActivity extends AppCompatActivity {
