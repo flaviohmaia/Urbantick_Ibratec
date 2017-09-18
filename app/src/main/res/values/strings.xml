@@ -8,6 +8,15 @@
     <string name="txtSubCategoria">Sub-Categoria</string>
     <string name="txtEstado">Estado</string>
     <string name="txtCidade">Cidade</string>
+    <string name="app_nameCab">Urbantick</string>
+    <string name="buscar">Buscar Fornecedor</string>
+    <string name="fornecedor">Lista de Fornecedores</string>
+    <string name="mapa">Onde encontrar</string>
+    <string name="metricas">Métricas</string>
+    <string name="opcao1">opcao1</string>
+    <string name="opcao2">opcao2</string>
+    <string name="opcao3">opcao3</string>
+    <string name="opcao4">opcao4</string>
 
     <string-array name="categorias">
         <item />

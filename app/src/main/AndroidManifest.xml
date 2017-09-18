@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="adaz.urbantick_ibratec">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -32,6 +32,7 @@
         </activity>
         <activity android:name=".Gui.ConsultaActivity" />
         <activity android:name=".Gui.FornecedorListaActivity" />
+        <activity android:name=".Gui.GuiActivity"></activity>
     </application>
 
 </manifest>

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         sessionManager = new SessionManager(getApplicationContext());
 
         if(sessionManager.isLoggedIn()){
-            Intent intent = new Intent(MainActivity.this, ConsultaActivity.class);
+            Intent intent = new Intent(MainActivity.this, GuiActivity.class);
             startActivity(intent);
             finish();
         }
@@ -59,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 String senha = editSenha.getText().toString().trim();
 
                 if(!email.isEmpty() && !senha.isEmpty()){
-                    doLogin(email, senha);
+                    //Só para testar depois apagar
+                    Intent inten = new Intent(MainActivity.this, GuiActivity.class);
+                    startActivity(inten);
+//                    doLogin(email, senha);
                 }else{
                     Toast.makeText(getApplicationContext(), "Informe suas credenciais", Toast.LENGTH_LONG).show();
                 }
@@ -67,59 +70,59 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-    public void doLogin(final String email, final String senha) {
-
-        String tag_string_req = "req_login";
-
-        StringRequest strRequest = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Login response: " + response.toString());
-
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    boolean error = jsonObject.getBoolean("error");
-
-                    if (!error) {
-                        sessionManager.setLogin(true);
-
-                        JSONObject usuario = jsonObject.getJSONObject("usuario");
-                        String nome = usuario.getString("nome");
-                        String email = usuario.getString("email");
-                        String senha = usuario.getString("senha");
-
-                        db.adicionar(nome, email, senha);
-
-                        Intent intent = new Intent(MainActivity.this, ConsultaActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        String errorMsg = jsonObject.getString("errorMsg");
-                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }){
-            protected Map<String, String> getParams(){
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email);
-                params.put("senha", senha);
-
-                return params;
-            }
-        };
-
-        AppController.getInstance().addToRequestQueue(strRequest, tag_string_req);
-    }
+//
+//
+//    public void doLogin(final String email, final String senha) {
+//
+//        String tag_string_req = "req_login";
+//
+//        StringRequest strRequest = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Log.d(TAG, "Login response: " + response.toString());
+//
+//                try {
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    boolean error = jsonObject.getBoolean("error");
+//
+//                    if (!error) {
+//                        sessionManager.setLogin(true);
+//
+//                        JSONObject usuario = jsonObject.getJSONObject("usuario");
+//                        String nome = usuario.getString("nome");
+//                        String email = usuario.getString("email");
+//                        String senha = usuario.getString("senha");
+//
+//                        db.adicionar(nome, email, senha);
+//
+//                        Intent intent = new Intent(MainActivity.this, ConsultaActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    } else {
+//                        String errorMsg = jsonObject.getString("errorMsg");
+//                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.e(TAG, "Login Error: " + error.getMessage());
+//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }){
+//            protected Map<String, String> getParams(){
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("email", email);
+//                params.put("senha", senha);
+//
+//                return params;
+//            }
+//        };
+//
+//        AppController.getInstance().addToRequestQueue(strRequest, tag_string_req);
+//    }
 }

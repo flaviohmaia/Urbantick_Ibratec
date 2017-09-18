@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.junior.projeto_urbantick.gui.MainActivity">
+   <group android:checkableBehavior="single">
+       <item
+           android:id="@+id/action_opcao1"
+           android:icon="@android:drawable/ic_menu_today"
+           android:title="@string/opcao1"/>
+
+       <item
+           android:id="@+id/action_opcao2"
+           android:icon="@android:drawable/ic_menu_view"
+           android:title="@string/opcao2" />
+
+       <item
+       android:id="@+id/action_opcao3"
+       android:icon="@android:drawable/ic_menu_send"
+       android:title="@string/opcao3" />
+
+       <item
+           android:id="@+id/action_opca4"
+           android:title="@string/opcao4" />
+
+   </group>
+</menu>
