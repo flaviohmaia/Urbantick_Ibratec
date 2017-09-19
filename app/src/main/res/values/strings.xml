@@ -18,6 +18,7 @@
     <string name="opcao3">opcao3</string>
     <string name="opcao4">opcao4</string>
     <string name="urbantick">Urbantick</string>
+    <string name="maps">Mapa</string>
 
     <string-array name="categorias">
         <item />

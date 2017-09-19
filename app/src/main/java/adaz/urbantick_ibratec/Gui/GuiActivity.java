@@ -1,15 +1,17 @@
 package adaz.urbantick_ibratec.Gui;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-
+import android.view.View;
 import adaz.urbantick_ibratec.R;
 
 public class GuiActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -54,6 +56,28 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
         selecionarOpcaoMenu(mNagivationView.getMenu().findItem(mOpcaoSelecionada));
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt("menuItem", mOpcaoSelecionada);
+    }
+
+    @Override
+    public void onPostCreate(Bundle saveInstanceState, PersistableBundle persistentState){
+        super.onPostCreate(saveInstanceState, persistentState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     //Selecionando Opção do menu
     private void selecionarOpcaoMenu(MenuItem menuItem){
         mOpcaoSelecionada = menuItem.getItemId();
@@ -69,6 +93,11 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
 //            Intent intent = new Intent(this, SugestoesActivity.class);
 //            startActivity(intent);
 //        }
+    }
+
+    public void mapaFornecedores(View v) {
+        Intent intent = new Intent(GuiActivity.this, MapsActivity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import adaz.urbantick_ibratec.R;
-
+/**
+ * Created by Dayse on 11/09/2017.
+ */
 public class SplashActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 3000;
