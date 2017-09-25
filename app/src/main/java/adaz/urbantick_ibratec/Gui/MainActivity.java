@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                         if (response.isSuccessful()) {
                             Toast.makeText(getBaseContext(), "Seja bem vindo!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, ConsultaActivity.class);
+                            Intent intent = new Intent(MainActivity.this, GuiActivity.class);
                             startActivity(intent);
                         }
                     }

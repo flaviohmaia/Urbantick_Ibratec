@@ -31,14 +31,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Gui.ConsultaActivity" />
-        <activity android:name=".Gui.GuiActivity"></activity>
+        <activity android:name=".Gui.GuiActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
-                  android:name=".Gui.MapsActivity"
-                  android:label="@string/maps"/>
+            android:name=".Gui.MapsActivity"
+            android:label="@string/maps" />
+        <activity android:name=".Gui.MetricasActivity"></activity>
     </application>
 
 </manifest>

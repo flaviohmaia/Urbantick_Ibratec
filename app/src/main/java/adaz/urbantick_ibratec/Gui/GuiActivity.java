@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+
+import adaz.urbantick_ibratec.FornecedorListaActivity;
 import adaz.urbantick_ibratec.R;
 
 public class GuiActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -98,6 +100,21 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
     public void mapaFornecedores(View v) {
         Intent intent = new Intent(GuiActivity.this, MapsActivity.class);
         startActivity(intent);
+    }
+
+    public void buscarFornecedor(View view){
+        Intent inte = new Intent(this , ConsultaActivity.class);
+        startActivity(inte);
+    }
+
+    public void listaFornecedor(View view){
+        Intent inte = new Intent(this , FornecedorListaActivity.class);
+        startActivity(inte);
+    }
+
+    public void metricas(View view){
+        Intent inte = new Intent(this , MetricasActivity.class);
+        startActivity(inte);
     }
 
     @Override
