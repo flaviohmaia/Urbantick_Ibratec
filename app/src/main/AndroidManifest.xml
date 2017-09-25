@@ -40,7 +40,7 @@
         <activity
             android:name=".Gui.MapsActivity"
             android:label="@string/maps" />
-        <activity android:name=".Gui.MetricasActivity"></activity>
+        <activity android:name=".Gui.MetricasActivity" />
     </application>
 
 </manifest>
