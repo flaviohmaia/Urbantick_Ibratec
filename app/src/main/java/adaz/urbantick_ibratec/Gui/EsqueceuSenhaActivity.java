@@ -55,9 +55,11 @@ public class EsqueceuSenhaActivity extends AppCompatActivity {
                         if (dialog.isShowing())
                             dialog.dismiss();
                         if (response.isSuccessful()) {
-                            Toast.makeText(getBaseContext(), "Email enviado com sucesso! \n Acesse sua conta!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Solicitação enviada com sucesso! \n Verifique seu email", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(EsqueceuSenhaActivity.this, MainActivity.class);
                             startActivity(intent);
+                        } else {
+                            Toast.makeText(getBaseContext(), "Ocorreu um erro ao processar a requisição", Toast.LENGTH_SHORT).show();
                         }
                     }
 

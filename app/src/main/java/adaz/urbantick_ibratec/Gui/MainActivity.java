@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dialog = new ProgressDialog(MainActivity.this);
                 dialog.setMessage("Carregando...");
-                dialog.setCancelable(false);
+                dialog.setCancelable(true);
                 dialog.show();
 
                 Intent intent = new Intent(MainActivity.this, EsqueceuSenhaActivity.class);

@@ -23,7 +23,7 @@ public interface IUsuarioREST {
     @POST("user/login")
     Call<Void> login(@Body Usuario usuario);
 
-    @POST("user/login")
+    @POST("recuperar/senha")
     Call<Void> resetPassword(@Body Usuario usuario);
 
     Retrofit retrofit = new Retrofit.Builder()

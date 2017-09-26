@@ -2,6 +2,7 @@
     <string name="app_name">Urbantick</string>
     <string name="txtEmail">E-mail</string>
     <string name="txtSenha">Senha</string>
+    <string name="txtRedefenirSenha">Recuperar senha</string>
     <string name="txtEntrar">Entrar</string>
     <string name="txtBuscar">Buscar</string>
     <string name="txtCategoria">Categoria</string>
