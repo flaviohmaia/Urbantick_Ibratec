@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import adaz.urbantick_ibratec.FornecedorListaActivity;
 import adaz.urbantick_ibratec.R;
@@ -90,13 +91,13 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
         }else if(mOpcaoSelecionada == R.id.action_opcao2){
 
         }else if (mOpcaoSelecionada == R.id.action_opcao3){
+            Toast.makeText(getBaseContext(), "Desconectando-se", Toast.LENGTH_LONG).show();
             finish();
             Intent intent = new Intent(this, SplashActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
     }
-
-    //public void logout(){   }
 
     public void mapaFornecedores(View v) {
         Intent intent = new Intent(GuiActivity.this, MapsActivity.class);
@@ -121,5 +122,9 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
