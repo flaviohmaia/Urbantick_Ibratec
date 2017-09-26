@@ -1,6 +1,7 @@
 package adaz.urbantick_ibratec.Gui;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -8,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,17 +85,18 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
         mOpcaoSelecionada = menuItem.getItemId();
         menuItem.setCheckable(true);
         mDrawerLayout.closeDrawers();
-//        if(mOpcaoSelecionada == R.id.action_opcao1){
-//            Intent intent = new Intent(this, PromocoesActivity.class);
-//            startActivity(intent);
-//        }else if(mOpcaoSelecionada == R.id.action_opcao2){
-//            Intent intent = new Intent(this, FavoritosActivity.class);
-//            startActivity(intent);
-//        }else if (mOpcaoSelecionada == R.id.action_opcao3){
-//            Intent intent = new Intent(this, SugestoesActivity.class);
-//            startActivity(intent);
-//        }
+        if(mOpcaoSelecionada == R.id.action_opcao1){
+
+        }else if(mOpcaoSelecionada == R.id.action_opcao2){
+
+        }else if (mOpcaoSelecionada == R.id.action_opcao3){
+            finish();
+            Intent intent = new Intent(this, SplashActivity.class);
+            startActivity(intent);
+        }
     }
+
+    //public void logout(){   }
 
     public void mapaFornecedores(View v) {
         Intent intent = new Intent(GuiActivity.this, MapsActivity.class);
