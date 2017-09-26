@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import adaz.urbantick_ibratec.Model.Usuario;
 import adaz.urbantick_ibratec.R;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = ConsultaActivity.class.getSimpleName();
     private EditText editEmail;
     private EditText editSenha;
+    private TextView txtEsqueceuSenha;
     private Button btnEntrar;
     private ProgressBar progressBar;
     private SessionManager sessionManager;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final EditText email = (EditText) findViewById(R.id.editEmail);
         final EditText senha = (EditText) findViewById(R.id.editSenha);
+        final TextView esqueceuSenha = (TextView) findViewById(R.id.txtEsqueceuSenha);
         Button adicionar = (Button) findViewById(R.id.btnEntrar);
 
         adicionar.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getBaseContext(), "Seja bem vindo!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this, GuiActivity.class);
                             startActivity(intent);
+                        } else {
+                            Toast.makeText(getBaseContext(), "Usuário ou senha inválidos!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -72,6 +77,19 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Não foi possível fazer a conexão", Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+
+        esqueceuSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog = new ProgressDialog(MainActivity.this);
+                dialog.setMessage("Carregando...");
+                dialog.setCancelable(false);
+                dialog.show();
+
+                Intent intent = new Intent(MainActivity.this, EsqueceuSenhaActivity.class);
+                startActivity(intent);
             }
         });
     }

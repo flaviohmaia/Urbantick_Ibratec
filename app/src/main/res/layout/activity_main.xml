@@ -62,4 +62,11 @@
         android:layout_centerInParent="true"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/txtEsqueceuSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ESQUECEU A SENHA?"
+        android:layout_weight="0.20" />
+
 </LinearLayout>

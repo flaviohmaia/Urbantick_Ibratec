@@ -23,6 +23,9 @@ public interface IUsuarioREST {
     @POST("user/login")
     Call<Void> login(@Body Usuario usuario);
 
+    @POST("user/login")
+    Call<Void> resetPassword(@Body Usuario usuario);
+
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://www.urbantick.com.br/api/")
             .addConverterFactory(GsonConverterFactory.create())
