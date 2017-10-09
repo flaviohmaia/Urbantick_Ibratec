@@ -2,6 +2,7 @@ package adaz.urbantick_ibratec.Retrofit;
 
 import java.util.List;
 
+import adaz.urbantick_ibratec.Model.Fornecedor;
 import adaz.urbantick_ibratec.Model.Usuario;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -25,6 +26,14 @@ public interface IUsuarioREST {
 
     @POST("recuperar/senha")
     Call<Void> resetPassword(@Body Usuario usuario);
+
+    @GET("provider/get/{uf}/{cidade}/{categoria}/{subcategoria}")
+    Call<List<Fornecedor>> listarFiltroFornecedor(
+            @Path("uf") String uf,
+            @Path("cidade") String cidade,
+            @Path("categoria") String categoria,
+            @Path("subcategoria") String subcategoria
+    );
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://www.urbantick.com.br/api/")

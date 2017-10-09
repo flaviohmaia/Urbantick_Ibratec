@@ -30,18 +30,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(tlb);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.maps);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng position = new LatLng(-8.0273188, -34.86729);
-        mMap.addMarker(new MarkerOptions().position(position).title("Urbantick").icon(BitmapDescriptorFactory.fromResource(R.drawable.urbantick_pin)));
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(position).zoom(14.0f).build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        mMap.moveCamera(cameraUpdate);
+
+        // Add a marker in Sydney and move the camera
+        LatLng recife = new LatLng(-8.1515521,-34.9221166);
+        mMap.addMarker(new MarkerOptions().position(recife).title("Unibratec"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(recife));
+        float zoomLevel = (float) 16.0; //This goes up to 21
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, zoomLevel));
     }
 
     @Override

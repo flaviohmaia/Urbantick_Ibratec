@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final EditText email = (EditText) findViewById(R.id.editEmail);
         final EditText senha = (EditText) findViewById(R.id.editSenha);
-        final TextView esqueceuSenha = (TextView) findViewById(R.id.txtEsqueceuSenha);
         Button adicionar = (Button) findViewById(R.id.btnEntrar);
 
         adicionar.setOnClickListener(new View.OnClickListener() {
@@ -77,19 +76,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Não foi possível fazer a conexão", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
-        });
-
-        esqueceuSenha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog = new ProgressDialog(MainActivity.this);
-                dialog.setMessage("Carregando...");
-                dialog.setCancelable(true);
-                dialog.show();
-
-                Intent intent = new Intent(MainActivity.this, EsqueceuSenhaActivity.class);
-                startActivity(intent);
             }
         });
     }

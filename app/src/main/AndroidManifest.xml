@@ -33,7 +33,7 @@
         <activity android:name=".Gui.ConsultaActivity" />
         <activity android:name=".Gui.GuiActivity" />
         <activity android:name=".Gui.EsqueceuSenhaActivity" />
-
+        <activity android:name=".Gui.ListagemFornecedorActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

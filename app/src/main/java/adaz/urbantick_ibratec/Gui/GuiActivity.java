@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import adaz.urbantick_ibratec.FornecedorListaActivity;
 import adaz.urbantick_ibratec.R;
 
 public class GuiActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -106,11 +105,6 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
 
     public void buscarFornecedor(View view){
         Intent inte = new Intent(this , ConsultaActivity.class);
-        startActivity(inte);
-    }
-
-    public void listaFornecedor(View view){
-        Intent inte = new Intent(this , FornecedorListaActivity.class);
         startActivity(inte);
     }
 
