@@ -85,6 +85,7 @@ public class ListagemFornecedorActivity extends AppCompatActivity {
             public void onFailure(Call<List<Fornecedor>> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
+                Log.e("TAG", "ERRO: " + t.getMessage());
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });

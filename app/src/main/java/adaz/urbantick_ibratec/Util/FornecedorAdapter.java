@@ -32,12 +32,12 @@ public class FornecedorAdapter extends ArrayAdapter<Fornecedor> {
 
         View rowView = inflater.inflate(R.layout.linha, parent, false);
 
-        TextView nomeFornecedor = (TextView) rowView.findViewById(R.id.txtNomeFornecedor);
+        TextView nome = (TextView) rowView.findViewById(R.id.txtNomeFornecedor);
         TextView categoria = (TextView) rowView.findViewById(R.id.txtCategoria);
         TextView telefone = (TextView) rowView.findViewById(R.id.txtTelefone);
 
 
-        nomeFornecedor.setText(elementos.get(position).getNome());
+        nome.setText(elementos.get(position).getApelido());
         categoria.setText(elementos.get(position).getCategoria());
         telefone.setText(elementos.get(position).getTelefone());
 
