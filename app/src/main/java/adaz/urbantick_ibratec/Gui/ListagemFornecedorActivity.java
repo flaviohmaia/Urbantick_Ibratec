@@ -69,15 +69,16 @@ public class ListagemFornecedorActivity extends AppCompatActivity {
                 if (listaFornecedor != null) {
                     FornecedorAdapter adapter = new FornecedorAdapter(getBaseContext(), listaFornecedor);
                     lista.setAdapter(adapter);
-                    /*lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(ListagemFornecedorActivity.this, TelaAbasActivity.class);
+                        Intent intent = new Intent(ListagemFornecedorActivity.this, DetalhesFornecedorActivity.class);
                         intent.putExtra("ID", listaFornecedor.get(i).getId());
+                            Log.i("TAG", String.valueOf(listaFornecedor.get(i).getId()));
                         startActivity(intent);
                         }
-                    });*/
+                    });
                 }
             }
 
@@ -86,7 +87,7 @@ public class ListagemFornecedorActivity extends AppCompatActivity {
                 if (dialog.isShowing())
                     dialog.dismiss();
                 Log.e("TAG", "ERRO: " + t.getMessage());
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Sem acesso a internet!", Toast.LENGTH_LONG).show();
             }
         });
     }

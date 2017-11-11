@@ -34,6 +34,7 @@
         <activity android:name=".Gui.GuiActivity" />
         <activity android:name=".Gui.EsqueceuSenhaActivity" />
         <activity android:name=".Gui.ListagemFornecedorActivity" />
+        <activity android:name=".Gui.DetalhesFornecedorActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
