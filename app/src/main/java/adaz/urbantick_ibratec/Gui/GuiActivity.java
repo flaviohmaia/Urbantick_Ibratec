@@ -108,10 +108,10 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
         startActivity(inte);
     }
 
-    public void metricas(View view){
-        Intent inte = new Intent(this , MetricasActivity.class);
-        startActivity(inte);
-    }
+//    public void metricas(View view){
+//        Intent inte = new Intent(this , MetricasActivity.class);
+//        startActivity(inte);
+//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
