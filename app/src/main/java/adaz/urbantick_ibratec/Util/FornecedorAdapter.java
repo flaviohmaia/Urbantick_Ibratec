@@ -30,7 +30,7 @@ public class FornecedorAdapter extends ArrayAdapter<Fornecedor> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.linha, parent, false);//tira o rg véi
+        View rowView = inflater.inflate(R.layout.linha, parent, false);
 
         TextView nome = (TextView) rowView.findViewById(R.id.txtNomeFornecedor);
         TextView categoria = (TextView) rowView.findViewById(R.id.txtCategoria);

@@ -1,7 +1,7 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">8dp</dimen>
-    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_cards">4dp</dimen>
     <dimen name="height_button_main_screen">50dp</dimen>
     <dimen name="height_image_main_screen">250dp</dimen>
@@ -17,4 +17,10 @@
     <dimen name="text_size_list_item">15dp</dimen>
     <dimen name="datail_item_height_image">200dp</dimen>
     <dimen name="toolbar_padding">0dp</dimen>
+    <dimen name="child_margin_top">24dp</dimen>
+    <dimen name="logo_height">80dp</dimen>
+    <dimen name="button_padding">48dp</dimen>
+    <dimen name="button_margin">24dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_items_margin">8dp</dimen>
 </resources>

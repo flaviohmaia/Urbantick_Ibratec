@@ -27,6 +27,15 @@ public interface IUsuarioREST {
     @POST("recuperar/senha")
     Call<Void> resetPassword(@Body Usuario usuario);
 
+    /*@POST("avaliar")
+    Call<Void> avaliarFornecedor(@Body Fornecedor fornecedor);*/
+
+    @GET("avaliar/{id_fornecedor}/{pontuacao}")
+    Call<Void> avaliarFornecedor(
+            @Path("id_fornecedor") int id_fornecedor,
+            @Path("pontuacao") float pontuacao
+    );
+
     @GET("provider/get/{uf}/{cidade}/{categoria}/{subcategoria}")
     Call<List<Fornecedor>> listarFiltroFornecedor(
             @Path("uf") String uf,
@@ -34,6 +43,9 @@ public interface IUsuarioREST {
             @Path("categoria") String categoria,
             @Path("subcategoria") String subcategoria
     );
+
+    @GET("provider/detail/{id}")
+    Call<Fornecedor> listarFornecedor(@Path("id") int id);
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://www.urbantick.com.br/api/")

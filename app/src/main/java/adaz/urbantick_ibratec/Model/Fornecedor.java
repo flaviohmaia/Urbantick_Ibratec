@@ -1,6 +1,9 @@
 package adaz.urbantick_ibratec.Model;
 
-public class Fornecedor {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Fornecedor implements Parcelable{
 
     private int id;
     private String nome;
@@ -9,13 +12,15 @@ public class Fornecedor {
     private String subcategoria;
     private String telefone;
     private String descricao;
+    private float pontuacao;
+    private String email;
     private Endereco endereco;
     private Usuario usuario;
 
     public Fornecedor(){ }
 
     public Fornecedor(int id, String nome, String apelido, String categoria, String subcategoria,
-                      String telefone, String descricao, Endereco endereco, Usuario usuario){
+                      String telefone, String descricao, float pontuacao, String email, Endereco endereco, Usuario usuario){
         this.id = id;
         this.nome = nome;
         this.apelido = apelido;
@@ -23,9 +28,52 @@ public class Fornecedor {
         this.subcategoria = subcategoria;
         this.telefone = telefone;
         this.descricao = descricao;
+        this.pontuacao = pontuacao;
+        this.email = email;
         this.usuario = usuario;
         this.endereco = endereco;
     }
+
+    protected Fornecedor(Parcel in) {
+        id = in.readInt();
+        nome = in.readString();
+        apelido = in.readString();
+        categoria = in.readString();
+        subcategoria = in.readString();
+        telefone = in.readString();
+        descricao = in.readString();
+        pontuacao = in.readFloat();
+        email = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(nome);
+        parcel.writeString(apelido);
+        parcel.writeString(categoria);
+        parcel.writeString(subcategoria);
+        parcel.writeString(telefone);
+        parcel.writeString(descricao);
+        parcel.writeFloat(pontuacao);
+        parcel.writeString(email);
+        //parcel.write(descricao);
+        //parcel.writeString(descricao);
+    }
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Fornecedor createFromParcel(Parcel in) {
+            return new Fornecedor(in);
+        }
+
+        public Fornecedor[] newArray(int size) {
+            return new Fornecedor[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -83,6 +131,22 @@ public class Fornecedor {
         this.descricao = descricao;
     }
 
+    public float getPontuacao() {
+        return pontuacao;
+    }
+
+    public void setPontuacao(float pontuacao) {
+        this.pontuacao = pontuacao;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Endereco getEndereco() {
         return endereco;
     }
@@ -91,7 +155,6 @@ public class Fornecedor {
         this.endereco = endereco;
     }
 
-
     public Usuario getUsuario() {
         return usuario;
     }
@@ -99,4 +162,5 @@ public class Fornecedor {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
 }

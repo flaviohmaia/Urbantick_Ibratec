@@ -2,9 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.junior.projeto_urbantick.gui.MainActivity">
    <group android:checkableBehavior="single">
+
+       <item
+           android:id="@+id/action_BuscarFornecedor"
+           android:icon="@android:drawable/btn_plus"
+           android:title="@string/BuscarFornecedor"/>
+
+       <item
+           android:id="@+id/action_OndeNosEncontrar"
+           android:icon="@android:drawable/ic_menu_today"
+           android:title="@string/OndeNosEncontrar"/>
+
        <item
            android:id="@+id/action_opcao1"
-           android:icon="@android:drawable/ic_menu_today"
+           android:icon="@android:drawable/btn_star_big_on"
            android:title="@string/opcao1"/>
 
        <item

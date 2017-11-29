@@ -3,6 +3,8 @@ package adaz.urbantick_ibratec.Gui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +43,10 @@ public class ConsultaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta);
+        Toolbar tlb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tlb);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Urbantick");
 
         btnBuscar1 = (Button) findViewById(R.id.btnBuscar);
         spinCategoria = (Spinner) findViewById(R.id.editCategoria);
@@ -54,5 +60,16 @@ public class ConsultaActivity extends AppCompatActivity {
                 buscarUsuarios();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

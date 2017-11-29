@@ -17,11 +17,6 @@
         <activity
             android:name=".Gui.SplashActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Gui.MainActivity">
             <intent-filter>
@@ -43,7 +38,6 @@
         <activity
             android:name=".Gui.MapsActivity"
             android:label="@string/maps" />
-        <activity android:name=".Gui.MetricasActivity" />
     </application>
 
 </manifest>

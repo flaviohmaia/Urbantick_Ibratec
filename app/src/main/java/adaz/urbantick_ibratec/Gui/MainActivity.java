@@ -13,8 +13,6 @@ import android.widget.Toast;
 import adaz.urbantick_ibratec.Model.Usuario;
 import adaz.urbantick_ibratec.R;
 import adaz.urbantick_ibratec.Retrofit.IUsuarioREST;
-import adaz.urbantick_ibratec.SQLiteHelper;
-import adaz.urbantick_ibratec.SessionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -29,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtEsqueceuSenha;
     private Button btnEntrar;
     private ProgressBar progressBar;
-    private SessionManager sessionManager;
-    private SQLiteHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

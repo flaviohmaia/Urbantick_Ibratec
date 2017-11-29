@@ -90,10 +90,16 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
         }else if(mOpcaoSelecionada == R.id.action_opcao2){
 
         }else if (mOpcaoSelecionada == R.id.action_opcao3){
-            Toast.makeText(getBaseContext(), "Desconectando-se", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Saindo...", Toast.LENGTH_LONG).show();
             finish();
             Intent intent = new Intent(this, SplashActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (mOpcaoSelecionada == R.id.action_BuscarFornecedor) {
+            Intent intent = new Intent(this, ConsultaActivity.class);
+            startActivity(intent);
+        } else if (mOpcaoSelecionada == R.id.action_OndeNosEncontrar) {
+            Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
         }
     }
@@ -105,11 +111,6 @@ public class GuiActivity extends AppCompatActivity implements NavigationView.OnN
 
     public void buscarFornecedor(View view){
         Intent inte = new Intent(this , ConsultaActivity.class);
-        startActivity(inte);
-    }
-
-    public void metricas(View view){
-        Intent inte = new Intent(this , MetricasActivity.class);
         startActivity(inte);
     }
 

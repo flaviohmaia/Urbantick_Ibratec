@@ -3,13 +3,16 @@ package adaz.urbantick_ibratec.Gui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import adaz.urbantick_ibratec.R;
@@ -17,6 +20,7 @@ import adaz.urbantick_ibratec.Model.Fornecedor;
 import adaz.urbantick_ibratec.Retrofit.IUsuarioREST;
 import adaz.urbantick_ibratec.Util.FornecedorAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,6 +39,10 @@ public class ListagemFornecedorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listagem_fornecedor);
+        Toolbar tlb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tlb);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Urbantick");
     }
 
     @Override
@@ -74,11 +82,22 @@ public class ListagemFornecedorActivity extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent intent = new Intent(ListagemFornecedorActivity.this, DetalhesFornecedorActivity.class);
-                        intent.putExtra("ID", listaFornecedor.get(i).getId());
-                            Log.i("TAG", String.valueOf(listaFornecedor.get(i).getId()));
-                        startActivity(intent);
+                            int id = listaFornecedor.get(i).getId();
+                            Bundle bundle = new Bundle();
+
+                            bundle.putInt("id", id);
+                            intent.putExtras(bundle);
+                            //intent.putParcelableArrayListExtra("listaFornecedor", (ArrayList<? extends Parcelable>) listaFornecedor);
+                            //bundle.putInt("ID", listaFornecedor.get(i).getId());
+                            //bundle.putString("DESCRICAO", listaFornecedor.get(i).getDescricao());
+                            //Log.i("TAG", String.valueOf(listaFornecedor.get(i).getId()));
+                            //Log.i("TAG", String.valueOf(listaFornecedor.get(i).getEndereco().getCidade()));
+
+                            startActivity(intent);
                         }
                     });
+                } else {
+                    Toast.makeText(getBaseContext(), "Não foram encontrado resultados com esses parâmetros", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -90,5 +109,16 @@ public class ListagemFornecedorActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Sem acesso a internet!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
