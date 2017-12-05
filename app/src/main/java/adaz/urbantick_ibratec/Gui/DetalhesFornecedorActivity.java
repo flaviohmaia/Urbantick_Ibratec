@@ -18,6 +18,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -32,8 +39,9 @@ import retrofit2.Response;
  * Created by lucasnascimento on 11/11/17.
  */
 
-public class DetalhesFornecedorActivity extends AppCompatActivity {
+public class DetalhesFornecedorActivity extends AppCompatActivity implements OnMapReadyCallback{
 
+    private GoogleMap mMap;
     ProgressDialog dialog;
     TextView mTvApelido;
     TextView mTvEmail;
@@ -41,31 +49,13 @@ public class DetalhesFornecedorActivity extends AppCompatActivity {
     RatingBar rtbPontuacao;
     Button btnSalvarPontuacao;
 
-    public HashMap getLocationFromAddress(String strAddress) {
-        Geocoder geocoder = new Geocoder(this);
-        List<Address> address;
-        HashMap<String, String> latlng = new HashMap<String, String>();
-
-        try {
-            address = geocoder.getFromLocationName(strAddress,1);
-            if (address.isEmpty()) {
-                return null;
-            }
-
-            Address location = address.get(0);
-            latlng.put("lat", location.getLatitude() + "");
-            latlng.put("lng", location.getLongitude() + "");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return latlng;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_fornecedor);
-
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         mTvApelido = (TextView) findViewById(R.id.tv_apelido);
         mTvEmail = (TextView) findViewById(R.id.tv_email);
@@ -120,56 +110,18 @@ public class DetalhesFornecedorActivity extends AppCompatActivity {
                 });
             }
         });
+    }
 
-//        btnSalvarPontuacao.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog = new ProgressDialog(DetalhesFornecedorActivity.this);
-//                dialog.setMessage("Carregando...");
-//                dialog.setCancelable(false);
-//                dialog.show();
-//
-//                //Intent intent = getIntent();
-//                //Bundle bundle = intent.getExtras();
-//                //int id = bundle.getInt("id");
-//                Fornecedor fornecedor = new Fornecedor();
-//                fornecedor.setId(fornecedor.getId());
-//                fornecedor.setPontuacao(rtbPontuacao.getRating());
-//
-//                IUsuarioREST iUsuarioREST = IUsuarioREST.retrofit.create(IUsuarioREST.class);
-//                final Call<Void> call = iUsuarioREST.avaliarFornecedor(fornecedor);
-//
-//
-//                call.enqueue(new Callback<Void>() {
-//                    @Override
-//                    public void onResponse(Call<Void> call, Response<Void> response) {
-//                        if (dialog.isShowing())
-//                            dialog.dismiss();
-//                        if (response.isSuccessful()) {
-//                            Toast.makeText(getBaseContext(), "Avaliação enviada!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(getBaseContext(), "ERRO AO AVALIAR", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<Void> call, Throwable t) {
-//                        if (dialog.isShowing())
-//                            dialog.dismiss();
-//                        Toast.makeText(getBaseContext(), "Não foi possível fazer a conexão", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
-
-        //rtbPontuacao.setRating(estrelas);
-
-        //List<Fornecedor> listaFornecedor = getIntent().getParcelableArrayListExtra("listaFornecedor");
-        //Log.i("TAG", String.valueOf(listaFornecedor.get(i).getApelido()));
-        //Intent intent = getIntent();
-        //Bundle bundle = intent.getExtras();
-        //ArrayList<Parcelable> teste = bundle.getParcelableArrayList("listaFornecedor"); //getString("listaFornecedor");
+        // Add a marker in Sydney and move the camera
+        LatLng recife = new LatLng(-8.1515521,-34.9221166);
+        mMap.addMarker(new MarkerOptions().position(recife).title("Unibratec"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(recife));
+        float zoomLevel = (float) 16.0; //This goes up to 21
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, zoomLevel));
     }
 
     @Override
@@ -179,6 +131,28 @@ public class DetalhesFornecedorActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         int id = bundle.getInt("id");
         Log.i("TAG", String.valueOf(id));
+        /*
+        String strAddress = bundle.getString("logradouro");
+
+        public HashMap getLocationFromAddress(String strAddress) {
+            Geocoder geocoder = new Geocoder(this);
+            List<Address> address;
+            HashMap<String, String> latlng = new HashMap<String, String>();
+
+            try {
+                address = geocoder.getFromLocationName(strAddress, 1);
+                if (address.isEmpty()) {
+                    return null;
+                }
+
+                Address location = address.get(0);
+                latlng.put("lat", location.getLatitude() + "");
+                latlng.put("lng", location.getLongitude() + "");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return latlng;
+        } */
 
 
         IUsuarioREST iUsuarioREST = IUsuarioREST.retrofit.create(IUsuarioREST.class);

@@ -14,13 +14,22 @@ public class Fornecedor implements Parcelable{
     private String descricao;
     private float pontuacao;
     private String email;
+    private String logradouro;
+    private String numero;
+    private String bairro;
+    private String cidade;
+    private String uf;
+    private String cep;
+    private String complemento;
     private Endereco endereco;
     private Usuario usuario;
 
     public Fornecedor(){ }
 
     public Fornecedor(int id, String nome, String apelido, String categoria, String subcategoria,
-                      String telefone, String descricao, float pontuacao, String email, Endereco endereco, Usuario usuario){
+                      String telefone, String descricao, float pontuacao, String email,
+                      String logradouro, String numero, String bairro, String cidade,
+                      String uf, String cep, String complemento, Usuario usuario){
         this.id = id;
         this.nome = nome;
         this.apelido = apelido;
@@ -30,6 +39,13 @@ public class Fornecedor implements Parcelable{
         this.descricao = descricao;
         this.pontuacao = pontuacao;
         this.email = email;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.cep = cep;
+        this.complemento = complemento;
         this.usuario = usuario;
         this.endereco = endereco;
     }
@@ -44,6 +60,14 @@ public class Fornecedor implements Parcelable{
         descricao = in.readString();
         pontuacao = in.readFloat();
         email = in.readString();
+        logradouro = in.readString();
+        numero = in.readString();
+        bairro = in.readString();
+        cidade = in.readString();
+        uf = in.readString();
+        cep = in.readString();
+        complemento = in.readString();
+
     }
 
     @Override
@@ -62,8 +86,13 @@ public class Fornecedor implements Parcelable{
         parcel.writeString(descricao);
         parcel.writeFloat(pontuacao);
         parcel.writeString(email);
-        //parcel.write(descricao);
-        //parcel.writeString(descricao);
+        parcel.writeString(logradouro);
+        parcel.writeString(numero);
+        parcel.writeString(bairro);
+        parcel.writeString(cidade);
+        parcel.writeString(uf);
+        parcel.writeString(cep);
+        parcel.writeString(complemento);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public Fornecedor createFromParcel(Parcel in) {
@@ -145,6 +174,63 @@ public class Fornecedor implements Parcelable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
     public Endereco getEndereco() {

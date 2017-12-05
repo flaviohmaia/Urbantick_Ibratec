@@ -2,7 +2,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="?attr/colorAccent"
     android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
@@ -11,6 +10,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/app_nameCab"
         android:id="@+id/textView"
-        android:layout_gravity="start|bottom"/>
+        android:layout_gravity="start|bottom"
+        android:fontFamily="casual"
+        android:textSize="50dp"
+        android:textAllCaps="false"
+        android:textStyle="bold" />
 
 </FrameLayout>
