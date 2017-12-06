@@ -112,17 +112,27 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
         });
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    public HashMap getLocationFromAddress(String strAddress) {
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> address;
+        HashMap<String, String> latlng = new HashMap<String, String>();
 
-        // Add a marker in Sydney and move the camera
-        LatLng recife = new LatLng(-8.1515521,-34.9221166);
-        mMap.addMarker(new MarkerOptions().position(recife).title("Unibratec"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(recife));
-        float zoomLevel = (float) 16.0; //This goes up to 21
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, zoomLevel));
+        try {
+            address = geocoder.getFromLocationName(strAddress, 1);
+            if (address.isEmpty()) {
+                return null;
+            }
+
+            Address location = address.get(0);
+            latlng.put("lat", location.getLatitude() + "");
+            latlng.put("lng", location.getLongitude() + "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return latlng;
     }
+
+
 
     @Override
     protected void onStart() {
@@ -131,29 +141,6 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
         Bundle bundle = intent.getExtras();
         int id = bundle.getInt("id");
         Log.i("TAG", String.valueOf(id));
-        /*
-        String strAddress = bundle.getString("logradouro");
-
-        public HashMap getLocationFromAddress(String strAddress) {
-            Geocoder geocoder = new Geocoder(this);
-            List<Address> address;
-            HashMap<String, String> latlng = new HashMap<String, String>();
-
-            try {
-                address = geocoder.getFromLocationName(strAddress, 1);
-                if (address.isEmpty()) {
-                    return null;
-                }
-
-                Address location = address.get(0);
-                latlng.put("lat", location.getLatitude() + "");
-                latlng.put("lng", location.getLongitude() + "");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return latlng;
-        } */
-
 
         IUsuarioREST iUsuarioREST = IUsuarioREST.retrofit.create(IUsuarioREST.class);
         dialog = new ProgressDialog(DetalhesFornecedorActivity.this);
@@ -173,11 +160,17 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
                 final Fornecedor fornecedor = response.body();
 
                 if(fornecedor != null) {
+
+                    String strAddress = fornecedor.getLogradouro();
+
+                    getLocationFromAddress(strAddress);
+
                     //Toast.makeText(getBaseContext(), "Usuário: " + fornecedor.getApelido(), Toast.LENGTH_LONG).show();
                     mTvApelido.setText(fornecedor.getApelido());
                     mTvEmail.setText(fornecedor.getEmail());
                     mTvDescricao.setText(fornecedor.getDescricao());
                     rtbPontuacao.setRating(fornecedor.getPontuacao());
+                    //Log.i("TAG", "teste:" + fornecedor.getLogradouro());
                 } else {
                     Toast.makeText(getBaseContext(), "ERRO: " + String.valueOf(code), Toast.LENGTH_LONG).show();
                 }
@@ -191,6 +184,19 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
                 Toast.makeText(getBaseContext(), "Sem acesso a internet!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng recife = new LatLng(-8.1515521,-34.9221166);
+        mMap.addMarker(new MarkerOptions().position(recife).title("Unibratec"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(recife));
+        float zoomLevel = (float) 16.0; //This goes up to 21
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, zoomLevel));
     }
 
     @Override

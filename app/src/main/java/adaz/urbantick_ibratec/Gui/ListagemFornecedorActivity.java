@@ -84,14 +84,13 @@ public class ListagemFornecedorActivity extends AppCompatActivity {
                         Intent intent = new Intent(ListagemFornecedorActivity.this, DetalhesFornecedorActivity.class);
                             int id = listaFornecedor.get(i).getId();
                             Bundle bundle = new Bundle();
-
                             bundle.putInt("id", id);
                             intent.putExtras(bundle);
                             //intent.putParcelableArrayListExtra("listaFornecedor", (ArrayList<? extends Parcelable>) listaFornecedor);
                             //bundle.putInt("ID", listaFornecedor.get(i).getId());
                             //bundle.putString("DESCRICAO", listaFornecedor.get(i).getDescricao());
                             //Log.i("TAG", String.valueOf(listaFornecedor.get(i).getId()));
-                            //Log.i("TAG", String.valueOf(listaFornecedor.get(i).getEndereco().getCidade()));
+                            //Log.i("TAG", String.valueOf(listaFornecedor.get(i).getLogradouro()));
 
                             startActivity(intent);
                         }
