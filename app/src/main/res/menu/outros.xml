@@ -13,15 +13,15 @@
            android:icon="@android:drawable/ic_menu_today"
            android:title="@string/OndeNosEncontrar"/>
 
-       <item
+       <!--<item
            android:id="@+id/action_opcao1"
            android:icon="@android:drawable/btn_star_big_on"
-           android:title="@string/opcao1"/>
+           android:title="@string/opcao1"/>-->
 
-       <item
+       <!--<item
            android:id="@+id/action_opcao2"
            android:icon="@android:drawable/ic_menu_view"
-           android:title="@string/opcao2" />
+           android:title="@string/opcao2" />-->
 
        <item
        android:id="@+id/action_opcao3"

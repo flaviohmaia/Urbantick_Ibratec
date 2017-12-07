@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import adaz.urbantick_ibratec.Model.Fornecedor;
@@ -112,10 +113,10 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
         });
     }
 
-    public HashMap getLocationFromAddress(String strAddress) {
+    public ArrayList<String> getLocationFromAddress(String strAddress) {
         Geocoder geocoder = new Geocoder(this);
         List<Address> address;
-        HashMap<String, String> latlng = new HashMap<String, String>();
+        ArrayList<String> latlng = new ArrayList<String>();
 
         try {
             address = geocoder.getFromLocationName(strAddress, 1);
@@ -124,8 +125,8 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
             }
 
             Address location = address.get(0);
-            latlng.put("lat", location.getLatitude() + "");
-            latlng.put("lng", location.getLongitude() + "");
+            latlng.add(location.getLatitude() + "");
+            latlng.add(location.getLongitude() + "");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -163,8 +164,13 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
 
                     String strAddress = fornecedor.getLogradouro();
 
-                    getLocationFromAddress(strAddress);
+                    ArrayList latLng = getLocationFromAddress(strAddress);
 
+                    if(strAddress != null) {
+                        setLocation(Double.parseDouble((String) latLng.get(0)), Double.parseDouble((String) latLng.get(1)));
+                    } else {
+                        Toast.makeText(getBaseContext(), "Dados cadastrais incompletos!", Toast.LENGTH_LONG).show();
+                    }
                     //Toast.makeText(getBaseContext(), "Usuário: " + fornecedor.getApelido(), Toast.LENGTH_LONG).show();
                     mTvApelido.setText(fornecedor.getApelido());
                     mTvEmail.setText(fornecedor.getEmail());
@@ -190,11 +196,12 @@ public class DetalhesFornecedorActivity extends AppCompatActivity implements OnM
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        setLocation(-8.1515521,-34.9221166);
+    }
 
-        // Add a marker in Sydney and move the camera
-        LatLng recife = new LatLng(-8.1515521,-34.9221166);
-        mMap.addMarker(new MarkerOptions().position(recife).title("Unibratec"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(recife));
+    private void setLocation(Double lat, Double lng){
+        LatLng recife = new LatLng(lat, lng);
+        mMap.addMarker(new MarkerOptions().position(recife).title("Localização"));
         float zoomLevel = (float) 16.0; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, zoomLevel));
     }
